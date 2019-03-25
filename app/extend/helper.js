@@ -33,6 +33,7 @@ exports.successOtherWithoutData = ({ ctx, code, msg })=> {
 // 格式化时间
 exports.formatTime = time => moment(time).format('YYYY-MM-DD HH:mm:ss')
 
+// 生成token
 exports.createToken = (ctx, _id) => {
   return jwt.sign({
     data: {
@@ -42,6 +43,7 @@ exports.createToken = (ctx, _id) => {
   }, ctx.app.config.jwt.secret)
 }
 
+// 验证token
 exports.verifyToken = (ctx, token) => {
   return jwt.verify(
     token, 

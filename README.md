@@ -99,10 +99,17 @@ exports.createToken = (ctx, _id) => {
 
 // 验证token
 exports.verifyToken = (ctx, token) => {
-  return jwt.verify(
-    token, 
-    ctx.app.config.jwt.secret
-  )
+  const result = {};
+  try {
+    result = jwt.verify(
+      token,
+      ctx.app.config.jwt.secret
+    );
+  } catch (err) {
+    // err
+  } finally {
+    return result;
+  }
 }
 ```
 

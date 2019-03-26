@@ -58,7 +58,7 @@ exports.createToken = (ctx, _id) => {
 
 // 验证token
 exports.verifyToken = (ctx, token) => {
-  const result = {};
+  let result = {};
   try {
     result = jwt.verify(
       token,

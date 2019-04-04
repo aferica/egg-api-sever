@@ -6,7 +6,7 @@ module.exports = () => {
     if (authToken) {
       authToken = authToken.substring(7);
       const res = await ctx.helper.verifyToken(ctx, authToken);
-      if (res.exp > Math.floor(Date.now() / 1000)) {
+      if (res && res.exp > Math.floor(Date.now() / 1000)) {
         ctx.locals.user = res.data;
         await next();
       } else {
